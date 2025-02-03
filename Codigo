@@ -1,0 +1,39 @@
+Nesse projeto foi realizado o controle do movimento de um servo motor usando um potenciômetro.
+O servo motor é um tipo de motor que pode ser posicionado em ângulos específicos. O potenciômetro 
+vai permitir que você ajuste a posição do servo motor manualmente.
+
+
+# Exemplo em C++:
+
+#include Servo.h
+
+    Servo meuServo;
+    
+    const int pinoPot = A0; 
+
+    int leituraPot;
+
+    int angulo;           
+    
+    void setup() {
+
+      Serial.begin(9600);
+
+      meuServo.attach(9);
+
+    }
+    
+    void loop() {
+
+      leituraPot = analogRead(pinoPot); 
+
+      Serial.println(leituraPot);      
+    
+      angulo = map(leituraPot, 0, 1023, 0, 180);
+
+      meuServo.write(angulo);  
+
+      delay(10); 
+
+    }
+    
